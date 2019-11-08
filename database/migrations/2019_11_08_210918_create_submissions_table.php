@@ -23,6 +23,7 @@ class CreateSubmissionsTable extends Migration
             $table->bigInteger('developer_skill')->nullable(false);
             $table->string('linked_in_profile')->nullable(false);
             $table->string('github_profile')->nullable(false);
+            $table->longText('description')->nullable(false);
             $table->jsonb('files')->nullable(false);
             $table->unsignedBigInteger('submission_type')->nullable(false);
             $table->timestamps();
