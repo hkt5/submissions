@@ -48,7 +48,7 @@ class GetUserTypeWithoutTrashedStrategy
 
             if($userType === null)
             {
-              throw new \Exception("The user was not found");
+              throw new \Exception("The selected id is invalid.");
             }
 
             return response()->json(
