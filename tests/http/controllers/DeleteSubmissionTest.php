@@ -1,14 +1,14 @@
 <?php
 
-use App\Submission;
 use App\UserType;
+use App\Submission;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\WithoutEvents;
 use Laravel\Lumen\Testing\WithoutMiddleware;
 
 
-class GetSubmissionByIdControllerTest extends TestCase
+class DeleteSubmissionTest extends TestCase
 {
     use WithoutEvents;
     use WithoutMiddleware;
@@ -38,11 +38,10 @@ class GetSubmissionByIdControllerTest extends TestCase
 
     }
 
-    public function testGetExistingSubmission() : void
+    public function testDeleteSubmission() : void
     {
         // given
-        $id = 1;
-
+        $data = ['id' => 1];
         $response = [
             'name' => 'Czesiu',
             'surname' => 'Kowalski',
@@ -56,24 +55,28 @@ class GetSubmissionByIdControllerTest extends TestCase
             'submission_type' => 1
         ];
         // when
-        $result = $this->get('/submission/'.$id);
+        $result = $this->delete('/delete/submission',$data);
+
         // then
         $result->seeStatusCode(Response::HTTP_OK);
-        $result->seeJson($response);
+        $result->seeJsonContains($response);
     }
 
-    public function testGetSubmissionWhichDoesNotExist() : void
-    {
-        $id = 2876;
 
-        $response = ['content' => [], 'error_messages' => ['id' => ['The selected id is invalid.']]];
+    public function testDeleteSubmissionThatDoesNotExist() : void
+    {
+        $data = ['id' => 1987];
+
+        $response = [
+            'content' => [], 'error_messages' => [
+                'id' => ['The selected id is invalid.']
+            ],
+        ];
     
-        $result = $this->get('/submission/'.$id); 
+        $result = $this->delete('/delete/submission',$data);
         $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
         $result->seeJson($response);
     }
 
-     
     
 }
-
