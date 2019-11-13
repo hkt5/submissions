@@ -95,7 +95,7 @@ class UpdateUserTypeStrategyTest extends TestCase
         $this->assertEquals('The id field is required.', $result_data['error_messages']['id'][0]);
     }
 
-    public function testUpdateUserTypeWithoutIdThatIsNotInteger() : void
+    public function testUpdateUserTypeWithIdThatIsNotInteger() : void
     {
         // given
         $data = [
