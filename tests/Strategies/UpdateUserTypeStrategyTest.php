@@ -100,7 +100,7 @@ class UpdateUserTypeStrategyTest extends TestCase
         // given
         $data = [
             'name' => 'jurek',
-            'id' => 31222
+            'id' => 'I am not integer'
         ];
 
         $data = [
@@ -115,7 +115,7 @@ class UpdateUserTypeStrategyTest extends TestCase
         $result_data = json_decode($result->content(), true);
         // then
         $this->assertEquals(Response::HTTP_BAD_REQUEST, $result->status());
-        $this->assertEquals('The selected id is invalid.', $result_data['error_messages']['id'][0]);
+        $this->assertEquals('The id must be an integer.', $result_data['error_messages']['id'][0]);
     }
 
 
