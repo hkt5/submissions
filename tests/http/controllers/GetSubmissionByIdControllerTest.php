@@ -73,6 +73,17 @@ class GetSubmissionByIdControllerTest extends TestCase
         $result->seeJson($response);
     }
 
+    public function testGetSubmissionWhichIsNotInteger() : void
+    {
+        $id = 2876;
+
+        $response = ['content' => [], 'error_messages' => ['id' => ['The selected id is invalid.']]];
+    
+        $result = $this->get('/submission/'.$id); 
+        $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
+        $result->seeJson($response);
+    }
+
      
     
 }

@@ -78,4 +78,25 @@ class UpdateUserTypeControllerTest extends TestCase
         $result->seeJsonContains($response);
     }
 
+    public function testUpdateUserTypeWithoutIdThatIsNotInteger() : void
+    {
+        // given
+        
+        $data = [
+            'name' => 'jurek',
+            'id' => 31222
+        ];
+
+         $response = [
+            'content' => [], 'error_messages' => [
+                'id' => ['The selected id is invalid.']
+            ],
+        ];
+        // when
+        $result = $this->put('/user-type',$data);
+        // then
+        $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
+        $result->seeJsonContains($response);
+    }
+
 }

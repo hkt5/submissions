@@ -7,7 +7,7 @@ use Laravel\Lumen\Testing\WithoutEvents;
 use Laravel\Lumen\Testing\WithoutMiddleware;
 
 
-class GetUserTypeWithTrashedControllerTest extends TestCase
+class DeleteSoftUserTypeControllerTest extends TestCase
 {
     use WithoutEvents;
     use WithoutMiddleware;
@@ -18,40 +18,41 @@ class GetUserTypeWithTrashedControllerTest extends TestCase
         parent::setUp();
 
         $userType = new UserType();
-        $userType->__set('name', 'I am not soft deleted');
+        $userType->__set('name', 'first_name');
         $userType->save();
 
         $userType = new UserType();
-        $userType->__set('name', 'I am soft deleted');
+        $userType->__set('name', 'second_name');
         $userType->save();
-        $userType->delete();
     }
 
-    public function testGetUntrashedUser() : void
+    public function testDeleteSoftUserType() : void
     {
         // given
-        $id = 1;
+        $data = ['id' => 1];
         // when
-        $result = $this->get('/user-type/with-trashed/'.$id);
+        $result = $this->delete('/delete/soft/user-type',$data);
         // then
         $result->seeStatusCode(Response::HTTP_OK);
-        $result->seeJson(['name' => 'I am not soft deleted']);
+        $result->seeJsonContains(['name' => 'first_name', 'id' => 1]);
     }
 
-    public function testGetTrashedUser() : void
+    public function testDeleteSoftUserTypeThatIsAlreadySoftDeleted() : void
     {
-        $id = 2;
-
-        $response = ['name' => "I am soft deleted"];
-    
-        $result = $this->get('/user-type/with-trashed/'.$id); 
-        $result->seeStatusCode(Response::HTTP_OK);
+        // given
+        $data = ['id' => 2];
+        $response = ['content' => [], 'error_messages' => ['error' => 'The user was already soft deleted']];
+        // when
+        $result = $this->delete('/delete/soft/user-type',$data);
+        $result = $this->delete('/delete/soft/user-type',$data);
+        // then
+        $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
         $result->seeJson($response);
     }
 
-     public function testGetUserWhichDoesNotExist() : void
+    public function testDeleteSoftUserTypeThatDoesNotExist() : void
     {
-        $id = 2999;
+        $data = ['id' => 1987];
 
         $response = [
             'content' => [], 'error_messages' => [
@@ -59,14 +60,14 @@ class GetUserTypeWithTrashedControllerTest extends TestCase
             ],
         ];
     
-        $result = $this->get('/user-type/without-trashed/'.$id); 
+        $result = $this->delete('/delete/soft/user-type',$data);
         $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
         $result->seeJson($response);
     }
 
-    public function testGetUserWhithIdThatIsNotInteger() : void
+    public function testDeleteSoftUserTypeWithIdThatIsNotInteger() : void
     {
-        $id = "I am not integer";
+        $data = ['id' => 'I am not an integer'];
 
         $response = [
             'content' => [], 'error_messages' => [
@@ -74,7 +75,7 @@ class GetUserTypeWithTrashedControllerTest extends TestCase
             ],
         ];
     
-        $result = $this->get('/user-type/without-trashed/'.$id); 
+        $result = $this->delete('/delete/soft/user-type',$data);
         $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
         $result->seeJson($response);
     }

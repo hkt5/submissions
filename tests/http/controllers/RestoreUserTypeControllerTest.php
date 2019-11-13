@@ -75,25 +75,20 @@ class RestoreUserTypeControllerTest extends TestCase
         $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
         $result->seeJsonContains($response);
     }
-/*
-    public function testUpdateUserTypeWithoutId() : void
+
+    public function testRestoreUserWithIdThatIsNotInteger() : void
     {
         // given
-        
         $data = [
-            'name' => 'jurek'
+            'id' => "I am not integer",
         ];
 
-         $response = [
-            'content' => [], 'error_messages' => [
-                'id' => ['The id field is required.']
-            ],
-        ];
+         $response = ['content' => [], 'error_messages' => ['id' => ['The id must be an integer.']]];
         // when
-        $result = $this->put('/user-type',$data);
+        $result = $this->put('/user-type/restore',$data);
         // then
         $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
         $result->seeJsonContains($response);
     }
-  */
+
 }

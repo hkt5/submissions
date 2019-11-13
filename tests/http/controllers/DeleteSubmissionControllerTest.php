@@ -8,7 +8,7 @@ use Laravel\Lumen\Testing\WithoutEvents;
 use Laravel\Lumen\Testing\WithoutMiddleware;
 
 
-class DeleteSubmissionTest extends TestCase
+class DeleteSubmissionControllerTest extends TestCase
 {
     use WithoutEvents;
     use WithoutMiddleware;
@@ -70,6 +70,21 @@ class DeleteSubmissionTest extends TestCase
         $response = [
             'content' => [], 'error_messages' => [
                 'id' => ['The selected id is invalid.']
+            ],
+        ];
+    
+        $result = $this->delete('/delete/submission',$data);
+        $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
+        $result->seeJson($response);
+    }
+
+    public function testDeleteSubmissionWithIdThatIsNotInteger() : void
+    {
+        $data = ['id' => "I am not integer"];
+
+        $response = [
+            'content' => [], 'error_messages' => [
+                'id' => ['The id must be an integer.']
             ],
         ];
     

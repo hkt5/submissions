@@ -64,5 +64,20 @@ class GetUserTypeWithoutTrashedControllerTest extends TestCase
         $result->seeJson($response);
     }
 
+    public function testGetUserWhithIdThatIsNotInteger() : void
+    {
+        $id = "I am not integer";
+
+        $response = [
+            'content' => [], 'error_messages' => [
+                'id' => ['The id must be an integer.']
+            ],
+        ];
+    
+        $result = $this->get('/user-type/without-trashed/'.$id); 
+        $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
+        $result->seeJson($response);
+    }
+
     
 }

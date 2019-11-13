@@ -7,7 +7,7 @@ use Laravel\Lumen\Testing\WithoutEvents;
 use Laravel\Lumen\Testing\WithoutMiddleware;
 
 
-class DeleteSoftUserTypeTest extends TestCase
+class DeleteHardUserTypeControllerTest extends TestCase
 {
     use WithoutEvents;
     use WithoutMiddleware;
@@ -20,37 +20,21 @@ class DeleteSoftUserTypeTest extends TestCase
         $userType = new UserType();
         $userType->__set('name', 'first_name');
         $userType->save();
-
-        $userType = new UserType();
-        $userType->__set('name', 'second_name');
-        $userType->save();
     }
 
-    public function testDeleteSoftUserType() : void
+    public function testDeleteHardUserType() : void
     {
         // given
         $data = ['id' => 1];
         // when
-        $result = $this->delete('/delete/soft/user-type',$data);
+        $result = $this->delete('/delete/hard/user-type',$data);
         // then
         $result->seeStatusCode(Response::HTTP_OK);
         $result->seeJsonContains(['name' => 'first_name', 'id' => 1]);
     }
 
-    public function testDeleteSoftUserTypeThatIsAlreadySoftDeleted() : void
-    {
-        // given
-        $data = ['id' => 2];
-        $response = ['content' => [], 'error_messages' => ['error' => 'The user was already soft deleted']];
-        // when
-        $result = $this->delete('/delete/soft/user-type',$data);
-        $result = $this->delete('/delete/soft/user-type',$data);
-        // then
-        $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
-        $result->seeJson($response);
-    }
 
-    public function testDeleteSoftUserTypeThatDoesNotExist() : void
+    public function testDeleteHardUserTypeThatDoesNotExist() : void
     {
         $data = ['id' => 1987];
 
@@ -60,7 +44,22 @@ class DeleteSoftUserTypeTest extends TestCase
             ],
         ];
     
-        $result = $this->delete('/delete/soft/user-type',$data);
+        $result = $this->delete('/delete/hard/user-type',$data);
+        $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
+        $result->seeJson($response);
+    }
+
+    public function testDeleteHardUserTypeWithIDThatIsNotInteger() : void
+    {
+        $data = ['id' => 'asdf'];
+
+        $response = [
+            'content' => [], 'error_messages' => [
+                'id' => ['The id must be an integer.']
+            ],
+        ];
+    
+        $result = $this->delete('/delete/hard/user-type',$data);
         $result->seeStatusCode(Response::HTTP_BAD_REQUEST);
         $result->seeJson($response);
     }
