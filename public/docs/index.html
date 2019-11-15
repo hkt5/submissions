@@ -1,0 +1,1396 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.
+<a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
+<!-- END_INFO -->
+<h1>general</h1>
+<!-- START_96e171215c9a2ad89492003bac368ad1 -->
+<h2>Get only untrashed user types.</h2>
+<p>[Returns user type data by given id but returns only users that are not soft deleted.]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "/user-type/without-trashed/1?id=et" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/user-type/without-trashed/1"
+);
+
+let params = {
+    "id": "et",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "id": 7,
+            "name": "test user type",
+            "deleted_at": null,
+            "created_at": "2019-11-15 13:55:45",
+            "updated_at": "2019-11-15 13:55:45"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "error": "The selected id is invalid."
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /user-type/without-trashed/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>id of a user type</td>
+</tr>
+</tbody>
+</table>
+<!-- END_96e171215c9a2ad89492003bac368ad1 -->
+<!-- START_02eb515dadd92480ab4689226b5b06f4 -->
+<h2>Get user types including trashed ones.</h2>
+<p>[Returns user type data by given id, returns also soft deleted user types.]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "/user-type/with-trashed/1?id=modi" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/user-type/with-trashed/1"
+);
+
+let params = {
+    "id": "modi",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "id": 7,
+            "name": "test user type",
+            "deleted_at": null,
+            "created_at": "2019-11-15 13:55:45",
+            "updated_at": "2019-11-15 13:55:45"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "id": 4,
+            "name": "some user type",
+            "deleted_at": "2019-11-15 13:10:33",
+            "created_at": "2019-11-15 12:41:36",
+            "updated_at": "2019-11-15 13:10:33"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /user-type/with-trashed/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>id of a user type</td>
+</tr>
+</tbody>
+</table>
+<!-- END_02eb515dadd92480ab4689226b5b06f4 -->
+<!-- START_54d1da13bd8a0738023f293ae3811f3e -->
+<h2>Get submission.</h2>
+<p>[Returns submission by given id]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "/submission/1?id=voluptatum" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/submission/1"
+);
+
+let params = {
+    "id": "voluptatum",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "submission": {
+            "id": 2,
+            "name": "name awesome",
+            "surname": "Kowalski",
+            "phone": "0700880788",
+            "email": "another@email.com",
+            "developer_type": 8,
+            "developer_skill": 7,
+            "linked_in_profile": "linked_in_profile",
+            "github_profile": "http:\/\/www.github.com\/czesiukowalski",
+            "description": "awesome developer",
+            "files": "{\"file\": \"somefile.txt\"}",
+            "submission_type": 1,
+            "created_at": "2019-11-15 12:13:33",
+            "updated_at": "2019-11-15 12:13:33"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET /submission/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>required</td>
+<td>id of a submission</td>
+</tr>
+</tbody>
+</table>
+<!-- END_54d1da13bd8a0738023f293ae3811f3e -->
+<!-- START_24d72d9fa8d492dbfe3d592ff3f3352b -->
+<h2>Create new user type.</h2>
+<p>[ Create new user type. ]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "/user-type" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"sit"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/user-type"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "sit"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "name": "some name",
+            "updated_at": "2019-11-15 12:39:00",
+            "created_at": "2019-11-15 12:39:00",
+            "id": 3
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "name": [
+            "The name field is required."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "name": [
+            "The name has already been taken."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "name": [
+            "The name must be at least 3 characters."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /user-type</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>Name of a user type. Must contain between 3 - 167 characters and must be unique. Two or more exacly the same names are not allowed.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_24d72d9fa8d492dbfe3d592ff3f3352b -->
+<!-- START_f7df20e11f866ce328623f1255e6a6b7 -->
+<h2>Create new submission.</h2>
+<p>[ Create new submission. ]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "/submission" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"eos","surname":"repudiandae","phone":"inventore","email":"eligendi","developer_type":19,"developer_skill":14,"linked_in_profile":"omnis","github_profile":"blanditiis","description":"nulla","files":"odio","submission_type":13}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/submission"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "eos",
+    "surname": "repudiandae",
+    "phone": "inventore",
+    "email": "eligendi",
+    "developer_type": 19,
+    "developer_skill": 14,
+    "linked_in_profile": "omnis",
+    "github_profile": "blanditiis",
+    "description": "nulla",
+    "files": "odio",
+    "submission_type": 13
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "submission": {
+            "name": "Czesiu",
+            "surname": "Kowalski",
+            "phone": "0700880788",
+            "developer_type": "8",
+            "developer_skill": "7",
+            "linked_in_profile": "linked_in_profile",
+            "github_profile": "http:\/\/www.github.com\/czesiukowalski",
+            "description": "awesome developer",
+            "submission_type": "1",
+            "files": "{\"file\":\"somefile.txt\"}",
+            "email": "czesiu@gmail.com",
+            "updated_at": "2019-11-15 12:09:10",
+            "created_at": "2019-11-15 12:09:10",
+            "id": 1
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "name": [
+            "The name field is required."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "email": [
+            "The email has already been taken."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "email": [
+            "The email format is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "email": [
+            "The email has already been taken."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "phone": [
+            "The phone format is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "submission_type": [
+            "The selected submission type is invalid."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST /submission</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>min:3 max:167  name of a user.</td>
+</tr>
+<tr>
+<td><code>surname</code></td>
+<td>string</td>
+<td>required</td>
+<td>min:3 max:167 - surname of a user.</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>phone-number</td>
+<td>required</td>
+<td>phone number - minimum 7 characters.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>email</td>
+<td>required</td>
+<td>email mus be unique - cannot be used by anyone else.</td>
+</tr>
+<tr>
+<td><code>developer_type</code></td>
+<td>integer</td>
+<td>required</td>
+<td>type of a developer.</td>
+</tr>
+<tr>
+<td><code>developer_skill</code></td>
+<td>integer</td>
+<td>required</td>
+<td>skill of a developer.</td>
+</tr>
+<tr>
+<td><code>linked_in_profile</code></td>
+<td>string</td>
+<td>required</td>
+<td>linked in profile.</td>
+</tr>
+<tr>
+<td><code>github_profile</code></td>
+<td>string</td>
+<td>required</td>
+<td>github profile.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>required</td>
+<td>description.</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td>json</td>
+<td>required</td>
+<td>files.</td>
+</tr>
+<tr>
+<td><code>submission_type</code></td>
+<td>integer</td>
+<td>required</td>
+<td>exists:user_types,id  id of a submission.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_f7df20e11f866ce328623f1255e6a6b7 -->
+<!-- START_5f93d051556723db66cef9b8b43afb14 -->
+<h2>Update user type.</h2>
+<p>[Update user type by given id]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "/user-type" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":18,"name":"dicta"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/user-type"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 18,
+    "name": "dicta"
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "id": 7,
+            "name": "testing",
+            "deleted_at": null,
+            "created_at": "2019-11-15 13:55:45",
+            "updated_at": "2019-11-15 14:59:29"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "name": [
+            "The name field is required."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "name": [
+            "The name must be at least 3 characters."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /user-type</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>Id of a user type you want to update.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>required</td>
+<td>User type name you want to update. Must contain 3-167 characters.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_5f93d051556723db66cef9b8b43afb14 -->
+<!-- START_2bbfe154347aedf0f5a1ff314636742f -->
+<h2>Restore trashed user type.</h2>
+<p>[Restore user type that has been soft deleted.]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "/user-type/restore" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":15}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/user-type/restore"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 15
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "id": 4,
+            "name": "some user type",
+            "deleted_at": null,
+            "created_at": "2019-11-15 12:41:36",
+            "updated_at": "2019-11-15 14:17:53"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "error": "The user is not soft deleted"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /user-type/restore</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>Id of a soft deleted user type</td>
+</tr>
+</tbody>
+</table>
+<!-- END_2bbfe154347aedf0f5a1ff314636742f -->
+<!-- START_805823463471ea5c3163cb80ceebf961 -->
+<h2>Update submission.</h2>
+<p>[Update submission by given id. Include key value pairs you want to update]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "/submission" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":6,"name":"odit","surname":"expedita","phone":"esse","email":"vero","developer_type":3,"developer_skill":19,"linked_in_profile":"sit","github_profile":"rem","description":"quasi","files":"maxime","submission_type":10}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/submission"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 6,
+    "name": "odit",
+    "surname": "expedita",
+    "phone": "esse",
+    "email": "vero",
+    "developer_type": 3,
+    "developer_skill": 19,
+    "linked_in_profile": "sit",
+    "github_profile": "rem",
+    "description": "quasi",
+    "files": "maxime",
+    "submission_type": 10
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "submission": {
+            "id": 2,
+            "name": "testing update",
+            "surname": "Kowalski",
+            "phone": "0700880788",
+            "email": "another@email.com",
+            "developer_type": 8,
+            "developer_skill": 7,
+            "linked_in_profile": "linked_in_profile",
+            "github_profile": "http:\/\/www.github.com\/czesiukowalski",
+            "description": "awesome developer",
+            "files": "{\"file\": \"somefile.txt\"}",
+            "submission_type": 1,
+            "created_at": "2019-11-15 12:13:33",
+            "updated_at": "2019-11-15 14:41:06"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "email": [
+            "The email has already been taken."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "email": [
+            "The email format is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "phone": [
+            "The phone format is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "submission_type": [
+            "The selected submission type is invalid."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT /submission</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>id of a submission you want to update.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>optional</td>
+<td>name of a user, must contain between 3 - 167 characters.</td>
+</tr>
+<tr>
+<td><code>surname</code></td>
+<td>string</td>
+<td>optional</td>
+<td>surname of a user, must contain between 3 - 167 characters.</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>phone-number</td>
+<td>optional</td>
+<td>phone number - minimum 7 characters.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>email</td>
+<td>optional</td>
+<td>must be unique - cannot be used by anyone else.</td>
+</tr>
+<tr>
+<td><code>developer_type</code></td>
+<td>integer</td>
+<td>optional</td>
+<td>type of a developer.</td>
+</tr>
+<tr>
+<td><code>developer_skill</code></td>
+<td>integer</td>
+<td>optional</td>
+<td>skill of a developer.</td>
+</tr>
+<tr>
+<td><code>linked_in_profile</code></td>
+<td>string</td>
+<td>optional</td>
+<td>linked in profile.</td>
+</tr>
+<tr>
+<td><code>github_profile</code></td>
+<td>string</td>
+<td>optional</td>
+<td>github profile.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>optional</td>
+<td>description.</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td>json</td>
+<td>optional</td>
+<td>files.</td>
+</tr>
+<tr>
+<td><code>submission_type</code></td>
+<td>integer</td>
+<td>optional</td>
+<td>an existing key of a user type</td>
+</tr>
+</tbody>
+</table>
+<!-- END_805823463471ea5c3163cb80ceebf961 -->
+<!-- START_8cf8af5ca8a9040a3e010da8a0d3933b -->
+<h2>Soft delete user type.</h2>
+<p>[To soft delete a user type means it won't be visible for query GET /user-type/without-trashed, however it is still visible for query GET /user-type/with-trashed/{id}. It also means it can be restored and still phisically exists in the database]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "/delete/soft/user-type" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":11}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/delete/soft/user-type"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 11
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "id": 4,
+            "name": "some user type",
+            "deleted_at": "2019-11-15 13:10:33",
+            "created_at": "2019-11-15 12:41:36",
+            "updated_at": "2019-11-15 13:10:33"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /delete/soft/user-type</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>An id of a user type</td>
+</tr>
+</tbody>
+</table>
+<!-- END_8cf8af5ca8a9040a3e010da8a0d3933b -->
+<!-- START_d5d987114566f95d2d84f32b67dc21e0 -->
+<h2>Hard delete user type.</h2>
+<p>[ To hard delete a user type means it is impossible to restore it. A row is physically deleted from the database]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "/delete/hard/user-type" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":9}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/delete/hard/user-type"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 9
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "user_type": {
+            "id": 6,
+            "name": "some user type",
+            "deleted_at": null,
+            "created_at": "2019-11-15 12:54:29",
+            "updated_at": "2019-11-15 12:54:29"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /delete/hard/user-type</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>An id of a user type</td>
+</tr>
+</tbody>
+</table>
+<!-- END_d5d987114566f95d2d84f32b67dc21e0 -->
+<!-- START_4b42abbd3cbb459994a237d3d0c78170 -->
+<h2>Delete submission.</h2>
+<p>[Deletes submission with given id]</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "/delete/submission" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":11}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "/delete/submission"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 11
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": {
+        "submission": {
+            "id": 1,
+            "name": "Czesiu",
+            "surname": "Kowalski",
+            "phone": "0700880788",
+            "email": "czesiu@gmail.com",
+            "developer_type": 8,
+            "developer_skill": 7,
+            "linked_in_profile": "linked_in_profile",
+            "github_profile": "http:\/\/www.github.com\/czesiukowalski",
+            "description": "awesome developer",
+            "files": "{\"file\": \"somefile.txt\"}",
+            "submission_type": 1,
+            "created_at": "2019-11-15 12:09:10",
+            "updated_at": "2019-11-15 12:09:10"
+        }
+    },
+    "error_messages": []
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The selected id is invalid."
+        ]
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "content": [],
+    "error_messages": {
+        "id": [
+            "The id must be an integer."
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE /delete/submission</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>An id of a submission</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4b42abbd3cbb459994a237d3d0c78170 -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>

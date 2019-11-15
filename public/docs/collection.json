@@ -1,0 +1,270 @@
+{
+    "variables": [],
+    "info": {
+        "name": " API",
+        "_postman_id": "e5a9d687-297d-48a2-8d4d-de6571bd37fc",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "general",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get only untrashed user types.",
+                    "request": {
+                        "url": "http:\/\/localhost\/user-type\/without-trashed\/{id}?id=et",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "[Returns user type data by given id but returns only users that are not soft deleted.]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get user types including trashed ones.",
+                    "request": {
+                        "url": "http:\/\/localhost\/user-type\/with-trashed\/{id}?id=modi",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "[Returns user type data by given id, returns also soft deleted user types.]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get submission.",
+                    "request": {
+                        "url": "http:\/\/localhost\/submission\/{id}?id=voluptatum",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "[Returns submission by given id]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Create new user type.",
+                    "request": {
+                        "url": "http:\/\/localhost\/user-type",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"sit\"\n}"
+                        },
+                        "description": "[ Create new user type. ]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Create new submission.",
+                    "request": {
+                        "url": "http:\/\/localhost\/submission",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"eos\",\n    \"surname\": \"repudiandae\",\n    \"phone\": \"inventore\",\n    \"email\": \"eligendi\",\n    \"developer_type\": 19,\n    \"developer_skill\": 14,\n    \"linked_in_profile\": \"omnis\",\n    \"github_profile\": \"blanditiis\",\n    \"description\": \"nulla\",\n    \"files\": \"odio\",\n    \"submission_type\": 13\n}"
+                        },
+                        "description": "[ Create new submission. ]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update user type.",
+                    "request": {
+                        "url": "http:\/\/localhost\/user-type",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 18,\n    \"name\": \"dicta\"\n}"
+                        },
+                        "description": "[Update user type by given id]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Restore trashed user type.",
+                    "request": {
+                        "url": "http:\/\/localhost\/user-type\/restore",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 15\n}"
+                        },
+                        "description": "[Restore user type that has been soft deleted.]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update submission.",
+                    "request": {
+                        "url": "http:\/\/localhost\/submission",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 6,\n    \"name\": \"odit\",\n    \"surname\": \"expedita\",\n    \"phone\": \"esse\",\n    \"email\": \"vero\",\n    \"developer_type\": 3,\n    \"developer_skill\": 19,\n    \"linked_in_profile\": \"sit\",\n    \"github_profile\": \"rem\",\n    \"description\": \"quasi\",\n    \"files\": \"maxime\",\n    \"submission_type\": 10\n}"
+                        },
+                        "description": "[Update submission by given id. Include key value pairs you want to update]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Soft delete user type.",
+                    "request": {
+                        "url": "http:\/\/localhost\/delete\/soft\/user-type",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 11\n}"
+                        },
+                        "description": "[To soft delete a user type means it won't be visible for query GET \/user-type\/without-trashed, however it is still visible for query GET \/user-type\/with-trashed\/{id}. It also means it can be restored and still phisically exists in the database]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Hard delete user type.",
+                    "request": {
+                        "url": "http:\/\/localhost\/delete\/hard\/user-type",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 9\n}"
+                        },
+                        "description": "[ To hard delete a user type means it is impossible to restore it. A row is physically deleted from the database]",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete submission.",
+                    "request": {
+                        "url": "http:\/\/localhost\/delete\/submission",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 11\n}"
+                        },
+                        "description": "[Deletes submission with given id]",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}
