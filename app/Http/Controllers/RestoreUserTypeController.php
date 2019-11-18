@@ -25,9 +25,7 @@ class RestoreUserTypeController extends Controller
      * [Restore user type that has been soft deleted.]
      *
      * @bodyParam id integer required Id of a soft deleted user type
-     
-     * @response 200 
-     {"content":{"user_type":{"id":4,"name":"some user type","deleted_at":null,"created_at":"2019-11-15 12:41:36","updated_at":"2019-11-15 14:17:53"}},"error_messages":[]}
+     * @response 200 {"content":{"user_type":{"id":4,"name":"some user type","deleted_at":null,"created_at":"2019-11-15 12:41:36","updated_at":"2019-11-15 14:17:53"}},"error_messages":[]}
      * @response 400 {"content":[],"error_messages":{"id":["The selected id is invalid."]}}
      * @response 400 {"content":[],"error_messages":{"id":["The id must be an integer."]}}
      * @response 400 {"content":[],"error_messages":{"error":"The user is not soft deleted"}}
