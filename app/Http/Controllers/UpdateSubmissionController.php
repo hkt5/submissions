@@ -35,9 +35,8 @@ class UpdateSubmissionController extends Controller
      * @bodyParam description string description.
      * @bodyParam files json files.
      * @bodyParam submission_type integer an existing key of a user type 
-     
-     * @response 200 
-     {"content":{"submission":{"id":2,"name":"testing update","surname":"Kowalski","phone":"0700880788","email":"another@email.com","developer_type":8,"developer_skill":7,"linked_in_profile":"linked_in_profile","github_profile":"http:\/\/www.github.com\/czesiukowalski","description":"awesome developer","files":"{\"file\": \"somefile.txt\"}","submission_type":1,"created_at":"2019-11-15 12:13:33","updated_at":"2019-11-15 14:41:06"}},"error_messages":[]}
+     *
+     * @response 200 {"content":{"submission":{"id":2,"name":"testing update","surname":"Kowalski","phone":"0700880788","email":"another@email.com","developer_type":8,"developer_skill":7,"linked_in_profile":"linked_in_profile","github_profile":"http:\/\/www.github.com\/czesiukowalski","description":"awesome developer","files":"{\"file\": \"somefile.txt\"}","submission_type":1,"created_at":"2019-11-15 12:13:33","updated_at":"2019-11-15 14:41:06"}},"error_messages":[]}
      * @response 400 {"content":[],"error_messages":{"id":["The selected id is invalid."]}}
      * @response 400 {"content":[],"error_messages":{"id":["The id must be an integer."]}}
      * @response 400 {"content":[],"error_messages":{"email":["The email has already been taken."]}}
