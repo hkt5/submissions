@@ -29,7 +29,6 @@ class GetUserTypeWithTrashedController extends Controller
      * @response 200{"content":{"user_type":{"id":4,"name":"some user type","deleted_at":"2019-11-15 13:10:33","created_at":"2019-11-15 12:41:36","updated_at":"2019-11-15 13:10:33"}},"error_messages":[]}
      * @response 400 {"content":[],"error_messages":{"id":["The selected id is invalid."]}}
      * @response 400 {"content":[],"error_messages":{"id":["The id must be an integer."]}}
-     
      */
 
     public function findByIdWithTrashed($id) : JsonResponse
