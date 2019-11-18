@@ -34,9 +34,7 @@ class CreateSubmissionController extends Controller
      * @bodyParam description string required  description.
      * @bodyParam files json required  files.
      * @bodyParam submission_type integer required exists:user_types,id  id of a submission.
-     *
-     * @response 200 
-     {"content":{"submission":{"name":"Czesiu","surname":"Kowalski","phone":"0700880788","developer_type":"8","developer_skill":"7","linked_in_profile":"linked_in_profile","github_profile":"http:\/\/www.github.com\/czesiukowalski","description":"awesome developer","submission_type":"1","files":"{\"file\":\"somefile.txt\"}","email":"czesiu@gmail.com","updated_at":"2019-11-15 12:09:10","created_at":"2019-11-15 12:09:10","id":1}},"error_messages":[]}
+     * @response 200 {"content":{"submission":{"name":"Czesiu","surname":"Kowalski","phone":"0700880788","developer_type":"8","developer_skill":"7","linked_in_profile":"linked_in_profile","github_profile":"http:\/\/www.github.com\/czesiukowalski","description":"awesome developer","submission_type":"1","files":"{\"file\":\"somefile.txt\"}","email":"czesiu@gmail.com","updated_at":"2019-11-15 12:09:10","created_at":"2019-11-15 12:09:10","id":1}},"error_messages":[]}
      * @response 400 {"content":[],"error_messages":{"name":["The name field is required."]}}
      * @response 400 {"content":[],"error_messages":{"email":["The email has already been taken."]}}
      * @response 400 {"content":[],"error_messages":{"email":["The email format is invalid."]}}
